@@ -1,11 +1,11 @@
+import * as React from "react";
+import Layout from "./Layout/Layout";
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-       Charlie can read
-      </header>
+      <Layout/>
     </div>
   );
 }
-
 export default App;
