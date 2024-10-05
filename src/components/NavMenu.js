@@ -12,15 +12,12 @@ import {
   Collapse
 } from "@mui/material";
 import activityObj from "../utils/activitiesObj";
+import { useSettingsContext } from "../contexts/Settings";
 
-const NavMenu = ({
-  openMenu,
-  handleToggleMenu,
-  currentActivity,
-  activitySettings,
-  handleSettingChange
-}) => {
-  const wordSearchSettings = activityObj[currentActivity].settings;
+const NavMenu = ({ openMenu, handleToggleMenu }) => {
+  const { currentActivity, activitySettings, handleSettingChange } =
+    useSettingsContext();
+  const currentActivitySettings = activityObj[currentActivity].settings;
   const [activeSubLists, setActiveSubLists] = useState({
     wordLength: false,
     gridSize: false
@@ -35,8 +32,8 @@ const NavMenu = ({
             <ListSubheader component="div">Activity Settings</ListSubheader>
           }
         >
-          {Object.keys(wordSearchSettings).map((setting) => (
-            <>
+          {Object.keys(currentActivitySettings).map((setting) => (
+            <div key={setting}>
               <ListItem
                 disablePadding
                 onClick={() =>
@@ -48,9 +45,11 @@ const NavMenu = ({
               >
                 <ListItemButton>
                   <ListItemIcon>
-                    {wordSearchSettings[setting].icon}
+                    {currentActivitySettings[setting].icon}
                   </ListItemIcon>
-                  <ListItemText primary={wordSearchSettings[setting].label} />
+                  <ListItemText
+                    primary={currentActivitySettings[setting].label}
+                  />
                 </ListItemButton>
               </ListItem>
               <Collapse
@@ -59,11 +58,11 @@ const NavMenu = ({
                 unmountOnExit
               >
                 <List component="div" disablePadding>
-                  {wordSearchSettings[setting].options.map((option) => {
+                  {currentActivitySettings[setting].options.map((option) => {
                     const isActive = option.value === activitySettings[setting];
                     return (
                       <ListItem
-                        button
+                        key={option.value}
                         onClick={() => {
                           console.log(option.value);
                           handleSettingChange(setting, option.value);
@@ -79,21 +78,18 @@ const NavMenu = ({
                             ? {
                                 backgroundColor: "secondary.main",
                                 color: "white",
-                                "&:hover": { backgroundColor: "secondary.dark"}
-
+                                "&:hover": { backgroundColor: "secondary.dark" }
                               }
                             : {}
                         }
                       >
-                        <ListItemText
-                          primary={option.label}
-                        />
+                        <ListItemText primary={option.label} />
                       </ListItem>
                     );
                   })}
                 </List>
               </Collapse>
-            </>
+            </div>
           ))}
           {/* ToDo: More Activities */}
         </List>
