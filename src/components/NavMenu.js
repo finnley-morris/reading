@@ -11,7 +11,7 @@ import {
   ListSubheader,
   Collapse
 } from "@mui/material";
-import activityObj from "../utils/activitiesObj";
+import activityObj from "../constants/activitiesObj";
 import { useSettingsContext } from "../contexts/Settings";
 
 const NavMenu = ({ openMenu, handleToggleMenu }) => {

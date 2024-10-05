@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import activitiesObj from "../utils/activitiesObj";
+import activitiesObj from "../constants/activitiesObj";
 
 const defaultValue = {
   currentActivity: "wordSearch",

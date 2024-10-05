@@ -6,7 +6,7 @@ import {
   Typography
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import activitiesObj from "../utils/activitiesObj";
+import activitiesObj from "../constants/activitiesObj";
 import { useSettingsContext } from "../contexts/Settings";
 
 const Toolbar = ({ handleToggleMenu }) => {

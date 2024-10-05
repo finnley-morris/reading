@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Grid from "@mui/material/Grid2";
 import NavMenu from "./NavMenu";
 import Toolbar from "./Toolbar";
-import activitiesObj from "../utils/activitiesObj";
+import activitiesObj from "../constants/activitiesObj";
 import { useSettingsContext } from "../contexts/Settings";
 
 const Layout = () => {

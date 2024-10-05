@@ -8,5 +8,3 @@ export const getWords = (length, numWords) => {
   }
   return selectedWords;
 };
-
-console.log(getWords(3, 5));
